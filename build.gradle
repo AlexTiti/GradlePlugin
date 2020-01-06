@@ -1,0 +1,52 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.61'
+    repositories {
+
+        maven {
+            url uri('./sdkPlugin')
+        }
+        google()
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.4'
+
+        classpath 'com.alex.sdk:statistics:0.0.1'
+
+        //classpath 'org.aspectj:aspectjtools:1.8.8'
+        //classpath 'org.aspectj:aspectjweaver:1.8.8'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+// 创建task
+task myTask() {
+    println(" config my task ")
+}
+
+// 配置task运行前后执行逻辑, leftShirt , << ,doFirst 三者效果一致
+myTask.doFirst {
+    println(" do first task ")
+}
+
+myTask.doLast {
+    println(" do last task ")
+}

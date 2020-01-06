@@ -1,0 +1,12 @@
+// 在单独文件中配置编译脚本，脚本插件
+project.task("showConfig"){
+    doLast {
+        println("$project.name: showConfig")
+
+    }
+}
+
+// 创建task
+task myTaskConfig(){
+    println(" my task in config ")
+}

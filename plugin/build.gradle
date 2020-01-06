@@ -1,0 +1,32 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:3.4.2'
+//    implementation "org.aspectj:aspectjtools:1.9.0"
+//    implementation "org.aspectj:aspectjrt:1.9.0"
+
+    compile 'org.ow2.asm:asm:7.0'
+    compile 'org.ow2.asm:asm-commons:7.0'
+    compile 'org.ow2.asm:asm-analysis:7.0'
+    compile 'org.ow2.asm:asm-util:7.0'
+    compile 'org.ow2.asm:asm-tree:7.0'
+}
+
+group = 'com.alex.sdk'
+archivesBaseName = 'statistics'
+version = '0.0.1'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri("../sdkPlugin"))
+        }
+    }
+}
